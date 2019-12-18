@@ -1,3 +1,7 @@
+.add {
+    color: green;
+}
+
 .edit {
     color: dodgerblue;
 }
@@ -11,15 +15,7 @@ table {
     border-collapse: collapse;
 }
 
-td {
-    padding: 10px 20px;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-    border-left: 1px solid;
-}
-
-th {
+td, th {
     padding: 10px 20px;
     border-top: 1px solid;
     border-bottom: 1px solid;

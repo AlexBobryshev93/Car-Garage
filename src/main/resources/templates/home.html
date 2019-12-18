@@ -9,19 +9,44 @@
 </head>
 
 <body ng-app="carGarage" ng-controller="carController">
+<h3>Our cars:</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Model</th>
+        <th>Color</th>
+    </tr>
+    <tr ng-repeat="car in cars">
+        <td>{{car.id}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.color}}</td>
+        <td><a ng-click="updateCar(car)" class="edit">edit</a></td>
+        <td><a ng-click="deleteCar(car)" class="delete">delete</a></td>
+    </tr>
+</table>
+<br/>
+<a ng-click="addCar()" class="add">ADD A NEW CAR</a>
+<h3>{{mode}} a car:</h3>
+<form ng-submit="submitCar()">
     <table>
         <tr>
-            <th>ID</th>
-            <th>Model</th>
-            <th>Color</th>
+            <td>ID</td>
+            <td>{{carForm.id}}</td>
         </tr>
-        <tr ng-repeat="car in cars">
-            <td>{{car.id}}</td>
-            <td>{{car.model}}</td>
-            <td>{{car.color}}</td>
-            <td><a ng-click="" class="edit">edit</a></td>
-            <td><a ng-click="" class="delete">delete</a></td>
+        <tr>
+            <td>Model</td>
+            <td><input type="text" ng-model="carForm.model"></td>
+        </tr>
+        <tr>
+            <td>Color</td>
+            <td>
+                <select ng-model="carForm.color">
+                    <option th:each="color : ${colors}" th:value="${color}" th:text="${color}"></option>
+                </select>
+            </td>
         </tr>
     </table>
+    <input type="submit" value="Submit"/>
+</form>
 </body>
 </html>
