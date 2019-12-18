@@ -52,12 +52,12 @@ public class MainRestController {
         return carRepo.save(car);
     }
 
-    @RequestMapping(value = "/car{id}",
+    @RequestMapping(value = "/car/{id}",
             method = RequestMethod.DELETE,
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public void deleteCar(@PathVariable("id") Long id) {
-        carRepo.deleteById(id);
+        if (carRepo.findById(id).isPresent()) carRepo.deleteById(id);
     }
 
 }
