@@ -3,12 +3,25 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Car Garage app</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
-    <script th:src="@{/main.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script th:src="@{/script.js}"></script>
     <link th:href="@{/style.css}" rel="stylesheet" type="text/css">
 </head>
 
-<body>
-Hello, world!
+<body ng-app="carGarage" ng-controller="carController">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Color</th>
+        </tr>
+        <tr ng-repeat="car in cars">
+            <td>{{car.id}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.color}}</td>
+            <td><a ng-click="" class="edit">edit</a></td>
+            <td><a ng-click="" class="delete">delete</a></td>
+        </tr>
+    </table>
 </body>
 </html>
