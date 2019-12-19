@@ -20,7 +20,12 @@ public class Car {
 
     public Car(String model, String color) {
         this.model = model;
-        this.color = Color.valueOf(color);
+
+        try {
+            this.color = Color.valueOf(color);
+        } catch (IllegalArgumentException e) {
+            this.color = Color.OTHER;
+        }
     }
 
     public Car(CarForm carForm) {
@@ -28,6 +33,6 @@ public class Car {
     }
 
     public enum Color {
-        BLACK, WHITE, RED, GREEN, SILVER, YELLOW, BLUE, BROWN, PURPLE, PINK
+        BLACK, WHITE, RED, GREEN, SILVER, YELLOW, BLUE, BROWN, PURPLE, PINK, ORANGE, OTHER
     }
 }

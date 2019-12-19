@@ -2,7 +2,8 @@ var app = angular.module("carGarage", []);
 
 app.controller('carController', function($http, $scope) {
     $scope.cars = [];
-    $scope.mode = "Create"; // create or edit
+    $scope.mode = "Create"; // Create or Edit
+    $scope.msg = "";
     $scope.carForm = {
         model: "",
         color: ""
@@ -12,7 +13,9 @@ app.controller('carController', function($http, $scope) {
 
     $scope.addCar = function () {
         _clearForm();
+
         $scope.mode = "Create";
+        $scope.msg = "";
     };
 
     $scope.submitCar = function () {
@@ -46,6 +49,7 @@ app.controller('carController', function($http, $scope) {
         };
 
         $scope.mode = "Edit";
+        $scope.msg = "";
     };
 
     $scope.deleteCar = function (car) {
@@ -53,6 +57,8 @@ app.controller('carController', function($http, $scope) {
             method: 'DELETE',
             url: '/car/' + car.id
         }).then(_success, _error);
+
+        if ($scope.mode == "Edit" && $scope.carForm.id == car.id) $scope.msg = "Error! This car was deleted.";
     };
 
     function _refreshData() {

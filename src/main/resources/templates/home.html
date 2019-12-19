@@ -35,7 +35,7 @@
         </tr>
         <tr>
             <td>Model</td>
-            <td><input type="text" ng-model="carForm.model"></td>
+            <td><input type="text" ng-model="carForm.model" required></td>
         </tr>
         <tr>
             <td>Color</td>
@@ -47,6 +47,7 @@
         </tr>
     </table>
     <input type="submit" value="Submit"/>
+    <p ng-bind="msg" class="msg"></p>
 </form>
 </body>
 </html>
